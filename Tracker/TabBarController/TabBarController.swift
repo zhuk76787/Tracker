@@ -11,19 +11,33 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        generateTabBar()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func generateTabBar() {
+        tabBar.tintColor = .tabBarAccentIcon
+        tabBar.unselectedItemTintColor = .unselectedTabBarIcon
+        viewControllers = [
+            generateVC(viewController: TrackerViewController(),
+                       title: "Трекеры", 
+                       image: UIImage(named: "trackerIcon")
+                      ),
+            generateVC(viewController: StatisticViewController(),
+                       title: "Статистика",
+                       image: UIImage(named: "statisticIcon")
+                      )
+        ]
     }
-    */
+    
+    private func generateVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
+        viewController.tabBarItem.title = title
+        viewController.tabBarItem.image = image
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10, weight: .medium)]
+               viewController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+               viewController.tabBarItem.setTitleTextAttributes(attributes, for: .selected)
+        
+        return viewController
+    }
 
 }
