@@ -7,14 +7,15 @@
 
 import UIKit
 import SwiftUI
-
+// MARK: - Preview
 struct StatisticViewControllerPreview: PreviewProvider {
     static var previews: some View {
         StatisticViewController().showPreview()
     }
 }
-
+// MARK: - StatisticVC
 class StatisticViewController: UIViewController {
+    // MARK: - Subviews
     private let titleLable: UILabel = {
         let labe = UILabel()
         labe.font = UIFont.boldSystemFont(ofSize: 34)
@@ -42,14 +43,14 @@ class StatisticViewController: UIViewController {
         labe.translatesAutoresizingMaskIntoConstraints = false
         return labe
     }()
-
+    // MARK: - methods ViewControllera
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupView()
         setConstraints()
     }
-    
+    // MARK: - setup View and Constraints
     private func setupView() {
         let subViews = [titleLable,image,questionLable]
         subViews.forEach { view.addSubview($0) }
@@ -73,15 +74,5 @@ class StatisticViewController: UIViewController {
             questionLable.widthAnchor.constraint(equalToConstant: 343)
         ])
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
