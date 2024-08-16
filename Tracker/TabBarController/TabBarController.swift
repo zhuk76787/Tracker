@@ -15,6 +15,8 @@ class TabBarController: UITabBarController {
     }
     
     private func generateTabBar() {
+//        tabBar.layer.borderWidth = 1
+//        tabBar.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         tabBar.tintColor = .tabBarAccentIcon
         tabBar.unselectedItemTintColor = .unselectedTabBarIcon
         viewControllers = [
