@@ -26,7 +26,7 @@ final class PlaceHolderView: UIView {
     
     // MARK: - Public Methods
     func setupNoTrackersState() {
-        imageView.image = UIImage(named: "statisticsStar")
+        imageView.image = UIImage(named: "starIcon")
         label.text = "Что будем отслеживать"
     }
     

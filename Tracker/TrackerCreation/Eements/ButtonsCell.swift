@@ -8,10 +8,6 @@
 import UIKit
 
 // MARK: - Types
-enum State {
-    case Habit
-    case Event
-}
 
 private enum Sections: Int, CaseIterable {
     case category = 0

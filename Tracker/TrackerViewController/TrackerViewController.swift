@@ -17,13 +17,11 @@ struct TrackerViewControllerPreview: PreviewProvider {
 class TrackerViewController: UIViewController {
     
     // MARK: - Subviews
-    @objc private let addTrackerButton: UIButton = {
+    private lazy var addTrackerButton: UIButton = {
         let button = UIButton()
         if let imageButton = UIImage(named: "addTrackerIcon") {
             button.setImage(imageButton, for: .normal)
-            button.addTarget(TrackerViewController.self, 
-                             action: #selector(didTapButton),
-                             for: .touchUpInside)
+            button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -34,7 +32,7 @@ class TrackerViewController: UIViewController {
             picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .compact
             picker.translatesAutoresizingMaskIntoConstraints = false
-            picker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+            picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
             return picker
         }()
    
@@ -67,24 +65,24 @@ class TrackerViewController: UIViewController {
         return searchBar
     }()
     
-    private let image: UIImageView = {
-        let imageView = UIImageView()
-        if let image = UIImage(named: "starIcon") {
-            imageView.image = image
-        }
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let questionLable: UILabel = {
-        let labe = UILabel()
-        labe.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        labe.textColor = #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
-        labe.text = "Что будем отслеживать?"
-        labe.textAlignment = .center
-        labe.translatesAutoresizingMaskIntoConstraints = false
-        return labe
-    }()
+//    private let image: UIImageView = {
+//        let imageView = UIImageView()
+//        if let image = UIImage(named: "starIcon") {
+//            imageView.image = image
+//        }
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
+//    
+//    private let questionLable: UILabel = {
+//        let labe = UILabel()
+//        labe.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+//        labe.textColor = #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
+//        labe.text = "Что будем отслеживать?"
+//        labe.textAlignment = .center
+//        labe.translatesAutoresizingMaskIntoConstraints = false
+//        return labe
+//    }()
     
     let collectionView: UICollectionView = {
           let layout = UICollectionViewFlowLayout()
@@ -104,50 +102,55 @@ class TrackerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
         setupView()
-        setConstraints()
+//        setConstraints()
+        
     }
     
     @objc
-    func didTapButton() {
-        let createTrackerViewController = NewTrackerViewController()
-        createTrackerViewController.delegate = self
-        let createTracker = UINavigationController(rootViewController: createTrackerViewController)
-        navigationController?.present(createTracker, animated: true)
-    }
-    
-    @objc private func datePickerChanged() {
-        updateDateLabel()
-        guard let date = dateLable.text else {return}
-        print("Выбранная дата: \(date)")
+     func didTapButton() {
+        print("Button tapped!")
+         let createTrackerViewController = NewTrackerViewController()
+         createTrackerViewController.delegate = self
+         let createTracker = UINavigationController(rootViewController: createTrackerViewController)
+         navigationController?.present(createTracker, animated: true)
     }
 
-    private func updateDateLabel() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yy"
-        dateLable.text = formatter.string(from: datePicker.date)
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy"
+        
+        let formattedDate = dateFormatter.string(from: selectedDate)
+        print("Formatted Date: \(formattedDate)")  // For debugging
+        
+        currentDate = selectedDate
+        updateCollectionAccordingToDate()
     }
     // MARK: - setup View and Constraits
     private func setupView() {
-        let subViews = [customNavigationBar, image, questionLable]
+        let subViews = [customNavigationBar, collectionView]
         subViews.forEach { view.addSubview($0) }
         setupNavigationBar()
-        updateDateLabel()
+        setupCollectionView()
+        
     }
     
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 402),
-            image.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            image.heightAnchor.constraint(equalToConstant: 80),
-            image.widthAnchor.constraint(equalToConstant: 80),
-            
-            questionLable.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 8),
-            questionLable.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            questionLable.heightAnchor.constraint(equalToConstant: 18),
-            questionLable.widthAnchor.constraint(equalToConstant: 343)
-        ])
-    }
+//    private func setConstraints() {
+//        NSLayoutConstraint.activate([
+//            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 402),
+//            image.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+//            image.heightAnchor.constraint(equalToConstant: 80),
+//            image.widthAnchor.constraint(equalToConstant: 80),
+//            
+//            questionLable.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 8),
+//            questionLable.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+//            questionLable.heightAnchor.constraint(equalToConstant: 18),
+//            questionLable.widthAnchor.constraint(equalToConstant: 343)
+//        ])
+//    }
     
     // MARK: - Custom Navigation Bar
     
@@ -233,7 +236,7 @@ class TrackerViewController: UIViewController {
             view.addSubview(collectionView)
             
             NSLayoutConstraint.activate([
-                collectionView.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor),
+                collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 206),
                 collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                 collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

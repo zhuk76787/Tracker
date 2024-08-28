@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4709D58E2C776B070066EC0B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709D58D2C776B060066EC0B /* State.swift */; };
 		47EAED6D2C6B7CB50062710E /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAED6C2C6B7CB50062710E /* Tracker.swift */; };
 		47EAED6F2C6B7CD10062710E /* TrackerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAED6E2C6B7CD10062710E /* TrackerCategory.swift */; };
 		47EAED712C6B7CE90062710E /* TrackerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAED702C6B7CE90062710E /* TrackerRecord.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4709D58D2C776B060066EC0B /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		47EAED6C2C6B7CB50062710E /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		47EAED6E2C6B7CD10062710E /* TrackerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategory.swift; sourceTree = "<group>"; };
 		47EAED702C6B7CE90062710E /* TrackerRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecord.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				47EAED9A2C6F8BB00062710E /* EmojiCell.swift */,
 				47EAED9C2C6F8BD20062710E /* ColorCell.swift */,
 				47EAED9E2C6F8BEC0062710E /* NameTrackerCell.swift */,
+				4709D58D2C776B060066EC0B /* State.swift */,
 			);
 			path = Eements;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				47EAED822C6F87DA0062710E /* ScheduleViewController.swift in Sources */,
 				47EAED752C6F7BDC0062710E /* TrackerCollectionViewCell.swift in Sources */,
 				47EAED922C6F8AF10062710E /* ConfigureUIForTrackerCreationProtocol.swift in Sources */,
+				4709D58E2C776B070066EC0B /* State.swift in Sources */,
 				47F89B922C63C185000D642C /* AppDelegate.swift in Sources */,
 				47EAED732C6B831B0062710E /* WeekDays.swift in Sources */,
 				47EAED9D2C6F8BD20062710E /* ColorCell.swift in Sources */,

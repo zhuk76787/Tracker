@@ -33,9 +33,14 @@ class CreationTrackerViewController: UIViewController {
         }
     }
     
-    var trackerCategory = "Здоровье" { //???
+    var trackerCategory = "Здоровье" {
         didSet {
-            configureUIDelegate?.checkIfSaveButtonCanBePressed()
+            if !trackerCategory.isEmpty {
+                configureUIDelegate?.checkIfSaveButtonCanBePressed()
+            } else {
+                // Действия, если строка пустая, например:
+                print("Категория не может быть пустой")
+            }
         }
     }
     
@@ -61,13 +66,13 @@ class CreationTrackerViewController: UIViewController {
         didSet {
             switch saveButtonCanBePressed {
             case true:
-                saveButton.backgroundColor = .black
+                saveButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
                 saveButton.isEnabled = true
             case false:
-                saveButton.backgroundColor = .lightGray
+                saveButton.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9098039216, blue: 0.9215686275, alpha: 1)
                 saveButton.isEnabled = false
             default:
-                saveButton.backgroundColor = .lightGray
+                saveButton.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9098039216, blue: 0.9215686275, alpha: 1)
                 saveButton.isEnabled = false
             }
         }
@@ -135,7 +140,7 @@ class CreationTrackerViewController: UIViewController {
     ///MARK: - Setup StackView And Buttons
     private func setupSaveButton() {
         saveButton.setTitle("Сохранить", for: .normal)
-        saveButton.backgroundColor = UIColor(named: "YP Gray")
+        saveButton.backgroundColor = #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1)
         saveButton.layer.cornerRadius = 16
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
@@ -152,8 +157,8 @@ class CreationTrackerViewController: UIViewController {
         cancelButton.layer.cornerRadius = 16
         cancelButton.layer.masksToBounds = true
         cancelButton.layer.borderWidth = 1
-        cancelButton.layer.borderColor = UIColor(named: "YP Red")?.cgColor
-        cancelButton.layer.backgroundColor = UIColor.white.cgColor
+        cancelButton.layer.borderColor = #colorLiteral(red: 0.9607843137, green: 0.4196078431, blue: 0.4235294118, alpha: 1)
+        cancelButton.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         

@@ -95,7 +95,6 @@ extension NewHabitCreationViewController: ConfigureUIForTrackerCreationProtocol 
         if trackerName != nil,
            selectedEmoji != nil,
            selectedColor != nil,
-           trackerCategory != nil,
            !selectedWeekDays.isEmpty
         {
             saveButtonCanBePressed = true

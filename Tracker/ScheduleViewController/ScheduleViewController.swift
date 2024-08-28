@@ -61,7 +61,7 @@ class ScheduleViewController: UIViewController {
     // MARK: - Private Methods
     private func setupSaveButton() {
         saveButton.setTitle("Готово", for: .normal)
-        saveButton.backgroundColor = UIColor(named: "YP Black")
+        saveButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
         saveButton.layer.cornerRadius = 16
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         saveButton.translatesAutoresizingMaskIntoConstraints = false

@@ -61,8 +61,7 @@ extension NewEventCreationViewController: ConfigureUIForTrackerCreationProtocol 
     func checkIfSaveButtonCanBePressed() {
         if trackerName != nil,
            selectedEmoji != nil,
-           selectedColor != nil,
-           trackerCategory != nil
+           selectedColor != nil
         {
             saveButtonCanBePressed = true
         } else {

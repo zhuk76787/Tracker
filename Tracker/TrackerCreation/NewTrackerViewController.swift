@@ -51,7 +51,7 @@ final class NewTrackerViewController: UIViewController {
         newHabitButton.setTitle("Привычка", for: .normal)
         newHabitButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newHabitButton.titleLabel?.textColor = .white
-        newHabitButton.backgroundColor = UIColor(named: "YP Black")
+        newHabitButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
         newHabitButton.layer.cornerRadius = 16
         newHabitButton.addTarget(self, action: #selector(newHabitPressed), for: .touchUpInside)
         newHabitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +69,7 @@ final class NewTrackerViewController: UIViewController {
         newEventButton.setTitle("Нерегулярное событие", for: .normal)
         newEventButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newEventButton.titleLabel?.textColor = .white
-        newEventButton.backgroundColor = UIColor(named: "YP Black")
+        newEventButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
         newEventButton.layer.cornerRadius = 16
         newEventButton.addTarget(self, action: #selector(newEventPressed), for: .touchUpInside)
         newEventButton.translatesAutoresizingMaskIntoConstraints = false

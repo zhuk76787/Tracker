@@ -71,7 +71,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
         if !checkIfTrackerWasCompleted() {
             guard let id = trackerInfo?.id,
                   let currentDay = trackerInfo?.currentDay,
-                  let state = trackerInfo?.state else { return }
+                  let _ = trackerInfo?.state else { return }
             if currentDay > Date() { return }
             addButton.setImage(UIImage(named: "done"), for: .normal)
             addButton.backgroundColor = color?.withAlphaComponent(0.3)
