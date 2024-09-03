@@ -26,23 +26,23 @@ class TrackerViewController: UIViewController {
         }
         return button
     }()
-   
+    
     private lazy var datePicker: UIDatePicker = {
-            let picker = UIDatePicker()
-            picker.datePickerMode = .date
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
         picker.locale = Locale(identifier: "ru_DE")
         picker.preferredDatePickerStyle = .compact
-            picker.translatesAutoresizingMaskIntoConstraints = false
-            picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         picker.widthAnchor.constraint(equalToConstant: 87).isActive = true
-            return picker
-        }()
-        
+        return picker
+    }()
+    
     let collectionView: UICollectionView = {
-          let layout = UICollectionViewFlowLayout()
-          let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-          return collectionView
-      }()
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
     
     // MARK: - Public Properties
     var categories: [TrackerCategory] = []
@@ -60,14 +60,14 @@ class TrackerViewController: UIViewController {
     }
     
     @objc
-     func didTapPlusButton() {
+    func didTapPlusButton() {
         print("Button tapped!")
-         let createTrackerViewController = NewTrackerViewController()
-         createTrackerViewController.delegate = self
-         let createTracker = UINavigationController(rootViewController: createTrackerViewController)
-         navigationController?.present(createTracker, animated: true)
+        let createTrackerViewController = NewTrackerViewController()
+        createTrackerViewController.delegate = self
+        let createTracker = UINavigationController(rootViewController: createTrackerViewController)
+        navigationController?.present(createTracker, animated: true)
     }
-
+    
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
@@ -97,21 +97,21 @@ class TrackerViewController: UIViewController {
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         return navigationBar
     }()
-
-   func setupNavigationBar() {
-       navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addTrackerButton)
-       navigationItem.rightBarButtonItem = UIBarButtonItem(customView: datePicker)
-       navigationItem.title = "Трекеры"
-       navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)]
-      navigationController?.navigationBar.prefersLargeTitles = true
-     
-       let searchController = UISearchController(searchResultsController: nil)
-       searchController.searchBar.placeholder = "Поиск"
-       navigationItem.searchController = searchController
-       setupNavigationBarConstraints()
-
-  }
-
+    
+    func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addTrackerButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: datePicker)
+        navigationItem.title = "Трекеры"
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)]
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        setupNavigationBarConstraints()
+        
+    }
+    
     private func setupNavigationBarConstraints() {
         NSLayoutConstraint.activate([
             customNavigationBar.topAnchor.constraint(equalTo: view.topAnchor),
@@ -120,32 +120,32 @@ class TrackerViewController: UIViewController {
             customNavigationBar.heightAnchor.constraint(equalToConstant: 182) // Высота с учетом всех элементов
         ])
     }
-
+    
     // MARK: setupCollectionView
     private func setupCollectionView() {
         collectionView.delegate = self
-            collectionView.dataSource = self
-            
-            collectionView.register(
-                TrackerCollectionViewCell.self,
-                forCellWithReuseIdentifier: TrackerCollectionViewCell.identifier
-            )
-            collectionView.register(
-                HeaderCollectionReusableView.self,
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: HeaderCollectionReusableView.identifier
-            )
-            collectionView.backgroundColor = .white
-            collectionView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(collectionView)
-            
-            NSLayoutConstraint.activate([
-                collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 182),
-                collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
-        }
+        collectionView.dataSource = self
+        
+        collectionView.register(
+            TrackerCollectionViewCell.self,
+            forCellWithReuseIdentifier: TrackerCollectionViewCell.identifier
+        )
+        collectionView.register(
+            HeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HeaderCollectionReusableView.identifier
+        )
+        collectionView.backgroundColor = .white
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 182),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
     
     private func showPlaceHolder() {
         let backgroundView = PlaceHolderView(frame: collectionView.frame)
@@ -157,8 +157,8 @@ class TrackerViewController: UIViewController {
         currentCategories = []
         let weekdayInt = Calendar.current.component(.weekday, from: currentDate)
         guard let day = (weekdayInt == 1) ? WeekDays(rawValue: 7) : WeekDays(rawValue: weekdayInt - 1) else {
-                return currentCategories
-            }
+            return currentCategories
+        }
         
         categories.forEach { category in
             let title = category.title
@@ -338,7 +338,6 @@ extension TrackerViewController: TrackerCreationDelegate {
             // Если категория не найдена, создаем новую категорию с трекером
             categories.append(TrackerCategory(title: category, trackers: [tracker]))
         }
-        
         // Обновляем коллекцию в соответствии с текущей датой
         updateCollectionAccordingToDate()
     }

@@ -13,6 +13,7 @@ struct StatisticViewControllerPreview: PreviewProvider {
         StatisticViewController().showPreview()
     }
 }
+
 // MARK: - StatisticVC
 class StatisticViewController: UIViewController {
     // MARK: - Subviews
@@ -74,5 +75,4 @@ class StatisticViewController: UIViewController {
             questionLable.widthAnchor.constraint(equalToConstant: 343)
         ])
     }
-
 }
