@@ -16,7 +16,7 @@ final class EmojiCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = self.isSelected ? UIColor(named: "YP Gray") : .clear
+            self.backgroundColor = self.isSelected ? .grey : .clear
         }
     }
     

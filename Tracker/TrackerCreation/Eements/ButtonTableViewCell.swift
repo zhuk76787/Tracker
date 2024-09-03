@@ -22,7 +22,7 @@ final class ButtonTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor(named: "YPGray")?.withAlphaComponent(0.3)
+        backgroundColor = .greyColorCell
         accessoryType = .disclosureIndicator
         layer.masksToBounds = true
         layer.cornerRadius = 16

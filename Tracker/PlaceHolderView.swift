@@ -10,7 +10,7 @@ import UIKit
 final class PlaceHolderView: UIView {
     
     // MARK: - Private Properties
-    private var imageView = UIImageView()
+    private let imageView = UIImageView()
     private var label = UILabel()
     
     // MARK: - Initializers
@@ -25,14 +25,19 @@ final class PlaceHolderView: UIView {
     }
     
     // MARK: - Public Methods
+   
     func setupNoTrackersState() {
         imageView.image = UIImage(named: "starIcon")
-        label.text = "Что будем отслеживать"
+        label.text = "Что будем отслеживать?"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textAlignment = .center
     }
     
     func setupNoSearchResultsState() {
         imageView.image = UIImage(named: "notFound")
         label.text = "Ничего не найдено"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textAlignment = .center
     }
     
     func setupNoStatisticState() {
@@ -47,8 +52,8 @@ final class PlaceHolderView: UIView {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 80),
             imageView.heightAnchor.constraint(equalToConstant: 80),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 223),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         label.textAlignment = .center

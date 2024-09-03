@@ -50,7 +50,7 @@ extension NewEventCreationViewController: ConfigureUIForTrackerCreationProtocol 
     
     func setupBackground() {
         self.title = "Новое нерегулярное событие"
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.hidesBackButton = true
     }
     

@@ -139,7 +139,7 @@ class CreationTrackerViewController: UIViewController {
     
     ///MARK: - Setup StackView And Buttons
     private func setupSaveButton() {
-        saveButton.setTitle("Сохранить", for: .normal)
+        saveButton.setTitle("Создать", for: .normal)
         saveButton.backgroundColor = #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1)
         saveButton.layer.cornerRadius = 16
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
@@ -176,8 +176,8 @@ class CreationTrackerViewController: UIViewController {
         stackView.distribution = UIStackView.Distribution.fillEqually
         stackView.alignment = UIStackView.Alignment.fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(cancelButton)
+        stackView.addArrangedSubview(saveButton)
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([

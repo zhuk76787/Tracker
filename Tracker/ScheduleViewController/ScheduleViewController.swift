@@ -19,7 +19,7 @@ private enum Constants {
     static let numberOfRowsInSection: Int = 7
 }
 
-class ScheduleViewController: UIViewController {
+final class ScheduleViewController: UIViewController {
     // MARK: - Public Properties
     weak var sheduleDelegate: ScheduleProtocol?
     var selectedDays: Set<WeekDays> = []
@@ -34,7 +34,7 @@ class ScheduleViewController: UIViewController {
         
         self.title = "Расписание"
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         setupSaveButton()
         setupTableView()
@@ -42,7 +42,7 @@ class ScheduleViewController: UIViewController {
     
     // MARK: - IBAction
     @objc
-    private func saveButtonPressed() {
+    private func didTapSaveButton() {
         navigationController?.popViewController(animated: true)
         sheduleDelegate?.saveSelectedDays(selectedDays: selectedDays)
         
@@ -63,7 +63,7 @@ class ScheduleViewController: UIViewController {
         saveButton.setTitle("Готово", for: .normal)
         saveButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
         saveButton.layer.cornerRadius = 16
-        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(saveButton)
         

@@ -19,7 +19,7 @@ final class ScheduleTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor(named: "YP Gray")?.withAlphaComponent(0.3)
+        backgroundColor = .greyColorCell
         setupSwitch()
     }
     
@@ -40,6 +40,7 @@ final class ScheduleTableCell: UITableViewCell {
     // MARK: - Private Methods
     private func setupSwitch() {
         switchButton.setOn(false, animated: true)
+        switchButton.onTintColor = #colorLiteral(red: 0.2156862745, green: 0.4470588235, blue: 0.9058823529, alpha: 1)
         self.accessoryView = switchButton
     }
 }

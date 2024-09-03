@@ -76,11 +76,11 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
             switch indexPath.row {
             case Sections.category.rawValue:
                 cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-                cell.backgroundColor = UIColor(named: "YP Gray")?.withAlphaComponent(0.3)
+                cell.backgroundColor = .greyColorCell
                 cell.titleLabel.text = "Категории"
             case Sections.schedule.rawValue:
                 cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-                cell.backgroundColor = UIColor(named: "YP Gray")?.withAlphaComponent(0.3)
+                cell.backgroundColor = .greyColorCell
                 cell.titleLabel.text = "Расписание"
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
             default:
@@ -88,7 +88,7 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
             }
         } else {
             cell.layer.masksToBounds = true
-            cell.backgroundColor = UIColor(named: "YP Gray")?.withAlphaComponent(0.3)
+            cell.backgroundColor = .greyColorCell
             cell.titleLabel.text = "Категории"
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
         }
