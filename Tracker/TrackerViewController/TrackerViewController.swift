@@ -52,11 +52,19 @@ class TrackerViewController: UIViewController {
         filterCategoriesToShow()
     }()
     
+    // MARK: - Public Properties
+    
+    private let trackerStore = TrackerStore()
+    private let trackerCategoryStore = TrackerCategoryStore()
+    private let trackerRecordStore = TrackerRecordStore()
+    
     // MARK: - methods ViewControllera
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupView()
+        trackerStore.delegate = self
+        trackerRecordStore.delegate = self
     }
     
     @objc
@@ -86,6 +94,11 @@ class TrackerViewController: UIViewController {
         subViews.forEach { view.addSubview($0) }
         setupNavigationBar()
         setupCollectionView()
+        createNewCategory()
+        
+        categories = trackerCategoryStore.categories
+        completedTrackers = trackerRecordStore.completedTrackers
+        updateCollectionAccordingToDate()
         
     }
     
@@ -145,6 +158,10 @@ class TrackerViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func createNewCategory() {
+        try? trackerCategoryStore.addNewCategory(name: "Важное")
     }
     
     private func showPlaceHolder() {
@@ -323,22 +340,22 @@ extension TrackerViewController: UISearchBarDelegate {
 //MARK: TrackerCreationDelegate
 extension TrackerViewController: TrackerCreationDelegate {
     func createTracker(tracker: Tracker, category: String) {
-        // Найдем категорию по названию
-        if let foundedCategory = categories.first(where: { $0.title == category }) {
-            // Если категория найдена, добавляем новый трекер в список существующих трекеров
-            var trackers = foundedCategory.trackers
-            trackers.append(tracker)
-            
-            // Удаляем старую категорию
-            categories = categories.filter { $0.title != category }
-            
-            // Добавляем обновленную категорию
-            categories.append(TrackerCategory(title: category, trackers: trackers))
-        } else {
-            // Если категория не найдена, создаем новую категорию с трекером
-            categories.append(TrackerCategory(title: category, trackers: [tracker]))
-        }
-        // Обновляем коллекцию в соответствии с текущей датой
+        try? trackerStore.addNewTracker(tracker: tracker, forCategory: category)
         updateCollectionAccordingToDate()
+    }
+}
+
+//MARK: - TrackerStoreDelegate
+extension TrackerViewController: TrackerStoreDelegate {
+    func store(insertedIndexes: [IndexPath], deletedIndexes: IndexSet) {
+        categories = trackerCategoryStore.categories
+        updateCollectionAccordingToDate()
+    }
+}
+
+//MARK: - TrackerRecordStoreDelegate
+extension TrackerViewController: TrackerRecordStoreDelegate {
+    func recordUpdate() {
+        completedTrackers = trackerRecordStore.completedTrackers
     }
 }
