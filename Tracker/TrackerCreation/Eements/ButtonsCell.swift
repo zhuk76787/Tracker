@@ -79,7 +79,7 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
                 cell.backgroundColor = .greyColorCell
                 cell.titleLabel.text = "Категории"
             case Sections.schedule.rawValue:
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
                 cell.backgroundColor = .greyColorCell
                 cell.titleLabel.text = "Расписание"
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
