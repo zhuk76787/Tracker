@@ -94,7 +94,7 @@ class TrackerViewController: UIViewController {
         subViews.forEach { view.addSubview($0) }
         setupNavigationBar()
         setupCollectionView()
-        createNewCategory()
+        
         
         categories = trackerCategoryStore.categories
         completedTrackers = trackerRecordStore.completedTrackers
@@ -160,8 +160,8 @@ class TrackerViewController: UIViewController {
         ])
     }
     
-    private func createNewCategory() {
-        try? trackerCategoryStore.addNewCategory(name: "Важное")
+    private func createNewCategory(categoryName: String) {
+        try? trackerCategoryStore.addNewCategory(name: categoryName)
     }
     
     private func showPlaceHolder() {

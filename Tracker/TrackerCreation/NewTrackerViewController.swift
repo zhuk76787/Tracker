@@ -35,6 +35,11 @@ final class NewTrackerViewController: UIViewController {
     @objc
     private func newHabitPressed() {
         let vc = NewHabitCreationViewController()
+        vc.closeCreatingTrackerViewController = { [weak self] in
+            guard let self = self else {return}
+            self.dismiss(animated: true)
+        }
+        _ = UINavigationController(rootViewController: vc)
         vc.creationDelegate = delegate
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -42,8 +47,13 @@ final class NewTrackerViewController: UIViewController {
     @objc
     private func newEventPressed() {
         let vc = NewEventCreationViewController()
+        vc.closeCreatingTrackerViewController = { [weak self] in
+            guard let self = self else {return}
+            self.dismiss(animated: true)
+        }
+        let navigationController = UINavigationController(rootViewController: vc)
         vc.creationDelegate = delegate
-        self.navigationController?.pushViewController(vc, animated: true)
+        present(navigationController, animated: true)
     }
     
     // MARK: - Private Methods
