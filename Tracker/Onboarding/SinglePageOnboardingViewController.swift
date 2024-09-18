@@ -7,12 +7,26 @@
 
 import UIKit
 
-class SinglePageOnboardingViewController: UIViewController {
+final class SinglePageOnboardingViewController: UIViewController, ViewConfigurable {
+    
     // MARK: - Private Properties
     private var text: String?
     private var imageTitle: String?
-    private var image = UIImageView()
-    private var textLabel = UILabel()
+    private lazy var onboardingImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var onboardingTextLabel: UILabel = {
+        let textLable = UILabel()
+        textLable.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        textLable.lineBreakMode = .byWordWrapping
+        textLable.numberOfLines = 0
+        textLable.textAlignment = .center
+        textLable.translatesAutoresizingMaskIntoConstraints = false
+        return textLable
+    }()
     
     // MARK: - Initializers
     init(text: String, imageTitle: String) {
@@ -28,42 +42,43 @@ class SinglePageOnboardingViewController: UIViewController {
     // MARK: - Public Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupBackground()
-        setupTextLabel()
+        configureView()
+    }
+    
+    // MARK: - ViewConfigurable Methods
+    func addSubviews() {
+        let subViews = [onboardingImage, onboardingTextLabel]
+        subViews.forEach { view.addSubview($0) }
+    }
+    
+    func addConstraints() {
+        NSLayoutConstraint.activate([
+            onboardingImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            onboardingImage.topAnchor.constraint(equalTo: view.topAnchor),
+            onboardingImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            onboardingImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            onboardingTextLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            onboardingTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            onboardingTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
     }
     
     // MARK: - Private Methods
-    private func setupBackground() {
+    private func configureImageView() {
         guard let imageTitle = imageTitle else { return }
-        
-        image.image = UIImage(named: imageTitle)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(image)
-        
-        NSLayoutConstraint.activate([
-            image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            image.topAnchor.constraint(equalTo: view.topAnchor),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            image.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        onboardingImage.image = UIImage(named: imageTitle)
     }
     
-    private func setupTextLabel() {
+    private func configureTextLable() {
         guard let text = text else { return }
-        
-        textLabel.text = text
-        textLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
-        textLabel.lineBreakMode = .byWordWrapping
-        textLabel.numberOfLines = 0
-        textLabel.textAlignment = .center
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textLabel)
-        
-        NSLayoutConstraint.activate([
-            textLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-        ])
+        onboardingTextLabel.text = text
+    }
+    
+    internal func  configureView() {
+        addSubviews()
+        addConstraints()
+        configureImageView()
+        configureTextLable()
     }
 }

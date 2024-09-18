@@ -7,20 +7,25 @@
 
 import UIKit
 
-final class CategoryCell: UITableViewCell {
+final class CategoryCell: UITableViewCell, ViewConfigurable {
     // MARK: - Public Properties
     static let identifier = "CategoryCell"
     
     var viewModel: CategoryViewModel? {
         didSet {
             viewModel?.titleBinding = { [weak self] title in
-                self?.label.text = title
+                self?.categorylabel.text = title
             }
         }
     }
     
     // MARK: - Private Properties
-    private var label = UILabel()
+    private lazy var categorylabel: UILabel = {
+        let lable = UILabel()
+        lable.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        lable.translatesAutoresizingMaskIntoConstraints = false
+        return lable
+    }()
     
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -30,23 +35,29 @@ final class CategoryCell: UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layer.maskedCorners = []
         
-        setupLabel()
+        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
-    private func setupLabel() {
-        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(label)
-        
+    // MARK: - ViewConfigurable Methods
+    func addSubviews() {
+        contentView.addSubview(categorylabel)
+    }
+    
+    func addConstraints() {
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            categorylabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            categorylabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
+    }
+    
+    // MARK: - Private Methods
+    internal func  configureView() {
+        addSubviews()
+        addConstraints()
     }
 }
 

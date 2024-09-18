@@ -7,29 +7,67 @@
 
 import UIKit
 
-final class CategoryViewController: UIViewController {
+final class CategoryViewController: UIViewController, ViewConfigurable {
     // MARK: - Public Properties
     var categoriesViewModel = CategoriesViewModel()
     
     // MARK: - Private Properties
-    private let tableView = UITableView()
-    private let createCategoryButton = UIButton()
+    private let categoryTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.identifier)
+        tableView.layer.cornerRadius = 16
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    private lazy var createCategoryButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Добавить категорию", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
+        button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(createCategoryButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     // MARK: - Public Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryTableView.dataSource = self
+        categoryTableView.delegate = self
         
         self.title = "Категория"
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         
-        setupButton()
-        setupTableView()
+        configureView()
         
         categoriesViewModel.categoriesBinding = { [weak self] _ in
             guard let self = self else {return}
-            self.tableView.reloadData()
+            self.categoryTableView.reloadData()
         }
+    }
+    
+    // MARK: - ViewConfigurable Methods
+    func addSubviews() {
+        let subViews = [createCategoryButton, categoryTableView]
+        subViews.forEach { view.addSubview($0) }
+    }
+    
+    func addConstraints() {
+        NSLayoutConstraint.activate([
+            createCategoryButton.heightAnchor.constraint(equalToConstant: 60),
+            createCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            createCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            createCategoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            
+            categoryTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            categoryTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            categoryTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            categoryTableView.bottomAnchor.constraint(equalTo: createCategoryButton.topAnchor, constant: -16)
+        ])
     }
     
     // MARK: - Private Methods
@@ -39,44 +77,9 @@ final class CategoryViewController: UIViewController {
     }
     
     private func showPlaceholder() {
-        let backgroundView = PlaceHolderView(frame: tableView.frame)
+        let backgroundView = PlaceHolderView(frame: categoryTableView.frame)
         backgroundView.setUpNoCategories()
-        tableView.backgroundView = backgroundView
-    }
-    
-    private func setupButton() {
-        createCategoryButton.setTitle("Добавить категорию", for: .normal)
-        createCategoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        createCategoryButton.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
-        createCategoryButton.layer.cornerRadius = 16
-        createCategoryButton.addTarget(self, action: #selector(createCategoryButtonTapped), for: .touchUpInside)
-        createCategoryButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(createCategoryButton)
-        
-        NSLayoutConstraint.activate([
-            createCategoryButton.heightAnchor.constraint(equalToConstant: 60),
-            createCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            createCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            createCategoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.identifier)
-        tableView.layer.cornerRadius = 16
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: createCategoryButton.topAnchor, constant: -16)
-        ])
+        categoryTableView.backgroundView = backgroundView
     }
 }
 
