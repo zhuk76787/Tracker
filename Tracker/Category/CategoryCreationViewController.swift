@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCreationViewController: UIViewController {
+final class CategoryCreationViewController: UIViewController {
     // MARK: - Public Properties
     var saveButtonCanBePressed: Bool? {
         didSet {
@@ -55,11 +55,11 @@ class CategoryCreationViewController: UIViewController {
     }
     
     @objc
-    func dismissKeyboard() {
+    private func dismissKeyboard() {
         view.endEditing(true)
     }
     @objc
-    func textFieldEditingChanged(_ textField: UITextField) {
+    private func textFieldEditingChanged(_ textField: UITextField) {
         guard let text = categoryNameTextField.text else { return }
         if text == "" {
             saveButtonCanBePressed = false

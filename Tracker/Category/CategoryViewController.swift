@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+final class CategoryViewController: UIViewController {
     // MARK: - Public Properties
     var categoriesViewModel = CategoriesViewModel()
     

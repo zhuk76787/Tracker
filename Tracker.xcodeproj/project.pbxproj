@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4709D58E2C776B070066EC0B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709D58D2C776B060066EC0B /* State.swift */; };
+		478C50452C9A1BED003B5183 /* ViewConfigurableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */; };
 		479476312C917A9E002DDE33 /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4794762F2C917A9E002DDE33 /* Tracker.xcdatamodeld */; };
 		479476342C91A518002DDE33 /* TrackerStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476332C91A518002DDE33 /* TrackerStoreError.swift */; };
 		479476362C91A566002DDE33 /* CategoryStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476352C91A566002DDE33 /* CategoryStoreError.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		4709D58D2C776B060066EC0B /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfigurableProtocol.swift; sourceTree = "<group>"; };
 		479476302C917A9E002DDE33 /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
 		479476332C91A518002DDE33 /* TrackerStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStoreError.swift; sourceTree = "<group>"; };
 		479476352C91A566002DDE33 /* CategoryStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStoreError.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		47F89B902C63C185000D642C /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */,
 				47DE14F42C98B63600FFDEAE /* Category */,
 				47DE14EF2C98A4D800FFDEAE /* Onboarding */,
 				4794762E2C917A80002DDE33 /* CoreData */,
@@ -403,6 +406,7 @@
 				47EAED772C6F7C160062710E /* TrackerCounterDelegate.swift in Sources */,
 				47DE14F12C98A51800FFDEAE /* OnboardingViewController.swift in Sources */,
 				47EAEDA32C6F8DB80062710E /* PlaceHolderView.swift in Sources */,
+				478C50452C9A1BED003B5183 /* ViewConfigurableProtocol.swift in Sources */,
 				47EAED6D2C6B7CB50062710E /* Tracker.swift in Sources */,
 				479476312C917A9E002DDE33 /* Tracker.xcdatamodeld in Sources */,
 				4794763D2C91A895002DDE33 /* ScheduleConvertor.swift in Sources */,

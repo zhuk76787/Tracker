@@ -292,7 +292,7 @@ extension CreationTrackerViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.identifier, for: indexPath) as? EmojiCell else {
             return UICollectionViewCell()
         }
-        cell.label.text = allEmojies[indexPath.row]
+        cell.emojiLabel.text = allEmojies[indexPath.row]
         return cell
     }
 }
@@ -348,7 +348,7 @@ extension CreationTrackerViewController: UICollectionViewDelegateFlowLayout {
                 collectionView.deselectItem(at: indexPath, animated: true)
                 return
             }
-            guard let emoji = cell.label.text else { return }
+            guard let emoji = cell.emojiLabel.text else { return }
             selectedEmoji = emoji
         } else if indexPath.section == Sections.color.rawValue {
             guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCell else {
