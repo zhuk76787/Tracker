@@ -52,6 +52,10 @@ final class ButtonTableViewCell: UITableViewCell, ViewConfigurable {
         }
     }
     
+    func setTitleLabelText(with string: String) {
+        titleLabel.text = NSLocalizedString("\(string)", comment: "")
+    }
+    
     // MARK: - Private Methods
     internal func configureView() {
         addSubviews()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4709D58E2C776B070066EC0B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4709D58D2C776B060066EC0B /* State.swift */; };
+		4730BEBF2CA18BA1003A2320 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4730BEBD2CA18BA1003A2320 /* Localizable.stringsdict */; };
 		478C50452C9A1BED003B5183 /* ViewConfigurableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */; };
 		479476312C917A9E002DDE33 /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4794762F2C917A9E002DDE33 /* Tracker.xcdatamodeld */; };
 		479476342C91A518002DDE33 /* TrackerStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476332C91A518002DDE33 /* TrackerStoreError.swift */; };
@@ -19,6 +20,7 @@
 		479476412C91A9D3002DDE33 /* TrackerCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476402C91A9D3002DDE33 /* TrackerCategoryStore.swift */; };
 		479476432C91AA58002DDE33 /* TrackerRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476422C91AA58002DDE33 /* TrackerRecordStore.swift */; };
 		479476452C91AAA3002DDE33 /* TrackerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479476442C91AAA3002DDE33 /* TrackerStore.swift */; };
+		47D3EAB62CA154D0001FF336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47D3EAB42CA154D0001FF336 /* Localizable.strings */; };
 		47DE14F12C98A51800FFDEAE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE14F02C98A51800FFDEAE /* OnboardingViewController.swift */; };
 		47DE14F32C98A56400FFDEAE /* SinglePageOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE14F22C98A56400FFDEAE /* SinglePageOnboardingViewController.swift */; };
 		47DE14F62C98B67F00FFDEAE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE14F52C98B67F00FFDEAE /* CategoryViewController.swift */; };
@@ -63,6 +65,10 @@
 
 /* Begin PBXFileReference section */
 		4709D58D2C776B060066EC0B /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		4730BEB72CA18A3B003A2320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4730BEB82CA18A3B003A2320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4730BEBE2CA18BA1003A2320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		4730BEC02CA1CAD6003A2320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfigurableProtocol.swift; sourceTree = "<group>"; };
 		479476302C917A9E002DDE33 /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
 		479476332C91A518002DDE33 /* TrackerStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStoreError.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		479476402C91A9D3002DDE33 /* TrackerCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryStore.swift; sourceTree = "<group>"; };
 		479476422C91AA58002DDE33 /* TrackerRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordStore.swift; sourceTree = "<group>"; };
 		479476442C91AAA3002DDE33 /* TrackerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
+		47D3EAB52CA154D0001FF336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47DE14F02C98A51800FFDEAE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		47DE14F22C98A56400FFDEAE /* SinglePageOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageOnboardingViewController.swift; sourceTree = "<group>"; };
 		47DE14F52C98B67F00FFDEAE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +167,15 @@
 				4794763E2C91A93B002DDE33 /* UIColorMarshalling.swift */,
 			);
 			path = Converters;
+			sourceTree = "<group>";
+		};
+		47D3EAB02CA1534F001FF336 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				47D3EAB42CA154D0001FF336 /* Localizable.strings */,
+				4730BEBD2CA18BA1003A2320 /* Localizable.stringsdict */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		47DE14EF2C98A4D800FFDEAE /* Onboarding */ = {
@@ -251,7 +267,7 @@
 		47F89B902C63C185000D642C /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */,
+				47D3EAB02CA1534F001FF336 /* Localization */,
 				47DE14F42C98B63600FFDEAE /* Category */,
 				47DE14EF2C98A4D800FFDEAE /* Onboarding */,
 				4794762E2C917A80002DDE33 /* CoreData */,
@@ -267,6 +283,7 @@
 				47EAEDA02C6F8C400062710E /* ExtentionUITextField.swift */,
 				47F89BB02C63F363000D642C /* PreviewVCExtention.swift */,
 				47EAEDA22C6F8DB80062710E /* PlaceHolderView.swift */,
+				478C50442C9A1BCB003B5183 /* ViewConfigurableProtocol.swift */,
 				47F89B9A2C63C188000D642C /* Assets.xcassets */,
 				47F89B9C2C63C188000D642C /* LaunchScreen.storyboard */,
 				47F89B9F2C63C188000D642C /* Info.plist */,
@@ -343,6 +360,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 47F89B852C63C185000D642C;
 			productRefGroup = 47F89B8F2C63C185000D642C /* Products */;
@@ -360,6 +378,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47F89B9B2C63C188000D642C /* Assets.xcassets in Resources */,
+				4730BEBF2CA18BA1003A2320 /* Localizable.stringsdict in Resources */,
+				47D3EAB62CA154D0001FF336 /* Localizable.strings in Resources */,
 				47F89B9E2C63C188000D642C /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,10 +447,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4730BEBD2CA18BA1003A2320 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4730BEBE2CA18BA1003A2320 /* en */,
+				4730BEC02CA1CAD6003A2320 /* ru */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		47D3EAB42CA154D0001FF336 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47D3EAB52CA154D0001FF336 /* en */,
+				4730BEB82CA18A3B003A2320 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		47F89B9C2C63C188000D642C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				47F89B9D2C63C188000D642C /* Base */,
+				4730BEB72CA18A3B003A2320 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -443,6 +482,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -506,6 +546,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

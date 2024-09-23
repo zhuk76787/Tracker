@@ -23,7 +23,7 @@ final class NameTrackerCell: UICollectionViewCell, ViewConfigurable {
         let textField = UITextField()
         textField.layer.cornerRadius = 16
         textField.backgroundColor = .greyColorCell
-        textField.placeholder = "Введите название трекера"
+        textField.placeholder = NSLocalizedString("trackerCreation.enterTitle", comment: "")
         textField.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         textField.setLeftPaddingPoints(12)
         textField.clearButtonMode = .whileEditing

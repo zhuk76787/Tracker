@@ -20,11 +20,11 @@ final class TabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = .unselectedTabBarIcon
         viewControllers = [
             generateVC(viewController: navigationViewController,
-                       title: "Трекеры",
+                       title: NSLocalizedString("trackers", comment: ""),
                        image: UIImage(named: "trackerIcon")
                       ),
             generateVC(viewController: StatisticViewController(),
-                       title: "Статистика",
+                       title: NSLocalizedString("statistics", comment: ""),
                        image: UIImage(named: "statisticIcon")
                       )
         ]

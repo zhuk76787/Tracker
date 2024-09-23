@@ -129,12 +129,12 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addTrackerButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: datePicker)
-        navigationItem.title = "Трекеры"
+        navigationItem.title = NSLocalizedString("trackers", comment: "")
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)]
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.placeholder = NSLocalizedString("placeholder.searchbar", comment: "")
         navigationItem.searchController = searchController
         
     }

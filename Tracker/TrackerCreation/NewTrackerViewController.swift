@@ -22,7 +22,7 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
     // MARK: - Private Properties
     private lazy var newHabitButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Привычка", for: .normal)
+        button.setTitle(NSLocalizedString("habit", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.titleLabel?.textColor = .white
         button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
@@ -34,7 +34,7 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
     
     private lazy var newEventButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Нерегулярное событие", for: .normal)
+        button.setTitle(NSLocalizedString("event", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.titleLabel?.textColor = .white
         button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)

@@ -21,7 +21,7 @@ final class StatisticViewController: UIViewController, ViewConfigurable {
         let labe = UILabel()
         labe.font = UIFont.boldSystemFont(ofSize: 34)
         labe.textColor = #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
-        labe.text = "Статистика"
+        labe.text = NSLocalizedString("statistics", comment: "")
         labe.translatesAutoresizingMaskIntoConstraints = false
         return labe
     }()
@@ -39,7 +39,7 @@ final class StatisticViewController: UIViewController, ViewConfigurable {
         let labe = UILabel()
         labe.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         labe.textColor = #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
-        labe.text = "Анализировать пока нечего"
+        labe.text = NSLocalizedString("placeholder.noStatistics", comment: "")
         labe.textAlignment = .center
         labe.translatesAutoresizingMaskIntoConstraints = false
         return labe
