@@ -40,6 +40,28 @@ final class PlaceHolderView: UIView {
         label.textAlignment = .center
     }
     
+    func setUpNoCategories() {
+        let image = UIImage(named: "starIcon")
+        imageView.image = image
+        
+        // Настраиваем стиль параграфа
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 18 - UIFont.systemFont(ofSize: 12, weight: .medium).lineHeight
+        
+        let attributedText = NSAttributedString(
+            string: "Привычки и события можно \n объединить по смыслу",
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 12, weight: .medium),
+                .paragraphStyle: paragraphStyle
+            ]
+        )
+        
+        label.attributedText = attributedText
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textAlignment = .center
+    }
+    
     func setupNoStatisticState() {
         // TODO:
     }
@@ -61,7 +83,7 @@ final class PlaceHolderView: UIView {
         addSubview(label)
         
         NSLayoutConstraint.activate([
-            label.heightAnchor.constraint(equalToConstant: 18),
+           // label.heightAnchor.constraint(equalToConstant: 18),
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
