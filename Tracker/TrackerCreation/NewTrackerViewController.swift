@@ -24,8 +24,12 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
         let button = UIButton()
         button.setTitle(NSLocalizedString("habit", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
+        button.setTitleColor(UIColor { traitCollection in
+               return traitCollection.userInterfaceStyle == .dark ?
+               #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Текст в светлой теме
+               #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Текст в тёмной теме
+           }, for: .normal)
+        button.backgroundColor = .buttonColor
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(newHabitPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -36,8 +40,12 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
         let button = UIButton()
         button.setTitle(NSLocalizedString("event", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
+        button.setTitleColor(UIColor { traitCollection in
+               return traitCollection.userInterfaceStyle == .dark ?
+               #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Текст в светлой теме
+               #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Текст в тёмной теме
+           }, for: .normal)
+        button.backgroundColor = .buttonColor
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(newEventPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +55,8 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
     // MARK: - Public Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        self.title = NSLocalizedString("chooseTrackerVC.title", comment: "")
+        view.backgroundColor = .systemBackground
         configureView()
     }
     

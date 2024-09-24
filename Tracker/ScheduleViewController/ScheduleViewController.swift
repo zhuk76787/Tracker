@@ -37,7 +37,13 @@ final class ScheduleViewController: UIViewController, ViewConfigurable {
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("done", comment: ""), for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.setTitleColor(UIColor { traitCollection in
+               return traitCollection.userInterfaceStyle == .dark ?
+               #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Текст в светлой теме
+               #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Текст в тёмной теме
+           }, for: .normal)
+        button.backgroundColor = .buttonColor
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +58,7 @@ final class ScheduleViewController: UIViewController, ViewConfigurable {
         configureView()
         self.title = NSLocalizedString("schedule", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = .systemBackground
     }
     
     // MARK: - ViewConfigurable Methods

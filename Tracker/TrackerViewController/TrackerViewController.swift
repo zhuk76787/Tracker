@@ -20,8 +20,9 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     // MARK: - Subviews
     private lazy var addTrackerButton: UIButton = {
         let button = UIButton()
-        if let imageButton = UIImage(named: "addIcon") {
+        if let imageButton = UIImage(named: "addIcon")?.withRenderingMode(.alwaysTemplate) {
             button.setImage(imageButton, for: .normal)
+            button.tintColor = .buttonColor
             button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
         }
         return button
@@ -61,7 +62,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     // MARK: - methods ViewControllera
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setupView()
         trackerStore.delegate = self
         trackerRecordStore.delegate = self
@@ -121,16 +122,16 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     
     private let customNavigationBar: UIView = {
         let navigationBar = UIView()
-        navigationBar.backgroundColor = .white
+        navigationBar.backgroundColor = .systemBackground
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         return navigationBar
     }()
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addTrackerButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: datePicker)
         navigationItem.title = NSLocalizedString("trackers", comment: "")
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let searchController = UISearchController(searchResultsController: nil)
@@ -153,7 +154,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionReusableView.identifier
         )
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     

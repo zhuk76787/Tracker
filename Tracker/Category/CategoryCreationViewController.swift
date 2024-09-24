@@ -13,7 +13,8 @@ final class CategoryCreationViewController: UIViewController, ViewConfigurable {
     var saveButtonCanBePressed: Bool? {
         didSet {
             let isEnabled = saveButtonCanBePressed ?? false
-            saveButton.backgroundColor = isEnabled ? #colorLiteral(red: 0.1352768838, green: 0.1420838535, blue: 0.1778985262, alpha: 1) : #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1)
+            saveButton.backgroundColor = isEnabled ? .buttonColor : #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1)
+            saveButton.titleLabel?.textColor = .textColor
             saveButton.isEnabled = isEnabled
         }
     }
@@ -52,7 +53,7 @@ final class CategoryCreationViewController: UIViewController, ViewConfigurable {
         
         self.title = NSLocalizedString("category.new", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         configureView()
         setupHideKeyboardGesture()

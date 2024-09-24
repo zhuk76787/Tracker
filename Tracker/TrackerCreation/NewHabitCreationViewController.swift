@@ -84,7 +84,7 @@ extension NewHabitCreationViewController: ConfigureUIForTrackerCreationProtocol 
     
     func setupBackground() {
         self.title = NSLocalizedString("habit.new", comment: "")
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
     }
     
