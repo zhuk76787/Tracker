@@ -25,6 +25,8 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
     
     var state: State?
     var tableView = UITableView()
+    var scheduleSubText: String?
+    var categorySubText: String?
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -94,9 +96,9 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
 extension ButtonsCell {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if state == .habit {
-            return 2
+            return CellSize.two
         } else {
-            return 1
+            return CellSize.one
         }
     }
     
@@ -111,11 +113,11 @@ extension ButtonsCell {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return CellSize.one
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return CellSize.seventyFive
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

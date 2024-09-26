@@ -65,6 +65,11 @@ final class NameTrackerCell: UICollectionViewCell, ViewConfigurable {
         ])
     }
     
+    // MARK: - Public Methods
+    func setTrackerNameTextField(with string: String) {
+        trackerNameTextField.text = string
+    }
+    
     // MARK: - Private Methods
     internal func configureView() {
         addSubviews()

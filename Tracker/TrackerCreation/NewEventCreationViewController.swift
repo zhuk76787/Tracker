@@ -32,7 +32,8 @@ final class NewEventCreationViewController: CreationTrackerViewController {
             color: color,
             emoji: emoji,
             schedule: weekSet,
-            state: .event
+            state: .event,
+            isPinned: false
         )
         
         creationDelegate?.createTracker(tracker: tracker, category: categoryTitle)

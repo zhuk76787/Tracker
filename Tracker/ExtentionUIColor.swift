@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    static var tabBarAccentIcon: UIColor { #colorLiteral(red: 0.2156862745, green: 0.4470588235, blue: 0.9058823529, alpha: 1) }
+    static var blueColor: UIColor { #colorLiteral(red: 0.2156862745, green: 0.4470588235, blue: 0.9058823529, alpha: 1) }
     static var subtitleLabelColor: UIColor { #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1) }
     static var unselectedTabBarIcon: UIColor { #colorLiteral(red: 0.69, green: 0.6910327673, blue: 0.6910327673, alpha: 1) }
     static var buttonColor: UIColor {

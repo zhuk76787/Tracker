@@ -8,8 +8,6 @@
 import UIKit
 
 final class PlaceHolderView: UIView {
-    // MARK: - Public Properties
-    var state: PlaceHolderState = .noTrackers
     
     // MARK: - Private Properties
     private let imageView = UIImageView()
@@ -27,18 +25,6 @@ final class PlaceHolderView: UIView {
     }
     
     // MARK: - Public Methods
-    func configurePlaceHolder() {
-        switch state {
-        case .noTrackers:
-            setupNoTrackersState()
-        case .noCategories:
-            setUpNoCategories()
-        case .noSearchResult:
-            setupNoSearchResultsState()
-        case .noStatistic:
-            setupNoStatisticState()
-        }
-    }
     
     func setupNoTrackersState() {
         imageView.image = UIImage(named: "starIcon")
@@ -77,11 +63,7 @@ final class PlaceHolderView: UIView {
     }
     
     func setupNoStatisticState() {
-        let image = UIImage(named: "cryIcon")
-        imageView.image = image
-        label.text = NSLocalizedString("placeholder.noStatistics", comment: "")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textAlignment = .center
+        // TODO:
     }
     
     // MARK: - Private Methods
@@ -101,6 +83,7 @@ final class PlaceHolderView: UIView {
         addSubview(label)
         
         NSLayoutConstraint.activate([
+           // label.heightAnchor.constraint(equalToConstant: 18),
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)

@@ -117,13 +117,15 @@ class CreationTrackerViewController: UIViewController {
         guard let name = trackerName,
               let color = selectedColor,
               let emoji = selectedEmoji,
-              let categoryTitle = trackerCategory?.title else { return }
+              let categoryTitle = trackerCategory?.title
+        else { return }
         let tracker = Tracker(
             name: name,
             color: color,
             emoji: emoji,
             schedule: selectedWeekDays,
-            state: .habit
+            state: .habit,
+            isPinned: false
         )
         
         creationDelegate?.createTracker(tracker: tracker, category: categoryTitle)
