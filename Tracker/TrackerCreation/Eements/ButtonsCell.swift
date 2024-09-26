@@ -7,13 +7,6 @@
 
 import UIKit
 
-// MARK: - Types
-
-private enum Sections: Int, CaseIterable {
-    case category = 0
-    case schedule
-}
-
 protocol ShowScheduleDelegate: AnyObject {
     func showScheduleViewController(viewController: ScheduleViewController)
 }
@@ -72,16 +65,18 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
         cell.prepareForReuse()
         
         guard let state = state else { return }
-        if state == .Habit {
+        if state == .habit {
             switch indexPath.row {
-            case Sections.category.rawValue:
+            case TrackerTypeSections.category.rawValue:
                 cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
                 cell.backgroundColor = .greyColorCell
                 cell.setTitleLabelText(with: "categories")
-            case Sections.schedule.rawValue:
+                cell.accessibilityIdentifier = "CategoryCell"
+            case TrackerTypeSections.schedule.rawValue:
                 cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
                 cell.backgroundColor = .greyColorCell
                 cell.setTitleLabelText(with: "schedule")
+                cell.accessibilityIdentifier = "ScheduleCell"
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
             default:
                 return
@@ -98,7 +93,7 @@ final class ButtonsCell: UICollectionViewCell, UITableViewDataSource, UITableVie
 //MARK: Delegate
 extension ButtonsCell {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if state == .Habit {
+        if state == .habit {
             return 2
         } else {
             return 1
@@ -125,9 +120,9 @@ extension ButtonsCell {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == Sections.category.rawValue {
+        if indexPath.row == TrackerTypeSections.category.rawValue {
             categoriesDelegate?.showCategoriesViewController(viewController: CategoryViewController())
-        } else if indexPath.row == Sections.schedule.rawValue {
+        } else if indexPath.row == TrackerTypeSections.schedule.rawValue {
             scheduleDelegate?.showScheduleViewController(viewController: ScheduleViewController())
         }
     }

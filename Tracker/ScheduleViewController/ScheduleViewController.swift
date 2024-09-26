@@ -15,7 +15,7 @@ struct ScheduleViewControllerPreview: PreviewProvider {
 }
 
 // MARK: - Constants
-private enum Constants {
+private enum RowConstants {
     static let numberOfRowsInSection: Int = 7
 }
 
@@ -106,8 +106,8 @@ final class ScheduleViewController: UIViewController, ViewConfigurable {
         cell.prepareForReuse()
         cell.configButton(with: indexPath.row, action: #selector(switchChanged(_:)), controller: self)
         
-        let lastCell = indexPath.row == Constants.numberOfRowsInSection - 1
-        let firstCell = indexPath.row == Constants.numberOfRowsInSection - 7
+        let lastCell = indexPath.row == RowConstants.numberOfRowsInSection - 1
+        let firstCell = indexPath.row == RowConstants.numberOfRowsInSection - 7
         
         if lastCell {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: scheduleTableView.bounds.width)
@@ -127,7 +127,7 @@ final class ScheduleViewController: UIViewController, ViewConfigurable {
 //MARK: - DataSource
 extension ScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Constants.numberOfRowsInSection
+        return RowConstants.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
