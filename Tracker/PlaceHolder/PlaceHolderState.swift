@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum PlaceHolderState {
+    case noCategories
+    case noTrackers
+    case noSearchResult
+    case noStatistic
+}
