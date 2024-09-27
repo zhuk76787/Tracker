@@ -1,7 +1,5 @@
 # Игнорировать папку Pods
 /Pods
-# Игнорировать файл AnalyticKey
-AnalyticKey.swift
 # Игнорировать файл Podfile.lock
 Podfile.lock
 # Игнорировать файл Tracker.xcworkspace
