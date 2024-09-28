@@ -28,15 +28,18 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         return navigationBar
     }()
     
-    private let statisticTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(StatisticsTableCell.self, forCellReuseIdentifier: StatisticsTableCell.identifier)
-        tableView.backgroundColor = .systemBackground
-        tableView.layer.cornerRadius = 16
-        tableView.layer.masksToBounds = true
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    private let statisticCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 12 // Расстояние между строками
+        layout.minimumInteritemSpacing = 12 // Расстояние между ячейками в строке
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 90) // Ширина и высота ячейки
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.layer.cornerRadius = 16
+        collectionView.layer.masksToBounds = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     
     private let trackerRecordStore = TrackerRecordStore()
@@ -54,17 +57,19 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         return trackerRecordStore.perfectDays
     }
     
-    private var averageTrackersPerDay: Int {
-        return Int(trackerRecordStore.averageTrackersPerDay)
+    private var averageTrackersPerDay: Double {
+        return trackerRecordStore.averageTrackersPerDay
     }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        statisticTableView.dataSource = self
-        statisticTableView.delegate = self
+        statisticCollectionView.dataSource = self
+        statisticCollectionView.register(StatisticsTableCell.self, forCellWithReuseIdentifier: StatisticsTableCell.identifier)
+        
         setupView()
         updateViewAccordingToScore()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(dataDidChange), name: .dataDidChange, object: nil)
     }
     
@@ -74,7 +79,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     
     // MARK: - Private Methods
     private func updateData() {
-        statisticTableView.reloadData()
+        statisticCollectionView.reloadData()
         updateViewAccordingToScore()
     }
     
@@ -84,7 +89,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     
     // MARK: - ViewConfigurable Methods
     func addSubviews() {
-        let subViews = [customNavigationBar, statisticTableView]
+        let subViews = [customNavigationBar, statisticCollectionView]
         subViews.forEach { view.addSubview($0) }
     }
     
@@ -95,14 +100,13 @@ class StatisticViewController: UIViewController, ViewConfigurable {
             customNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             customNavigationBar.heightAnchor.constraint(equalToConstant: 182),
             
-            statisticTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            statisticTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 206),
-            statisticTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            statisticTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            statisticCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            statisticCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 206),
+            statisticCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statisticCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
-    // MARK: - Private Methods
     private func setupView() {
         setupNavigationBar()
         configureView()
@@ -115,9 +119,9 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     }
     
     private func showPlaceHolder() {
-        let backgroundView = PlaceHolderView(frame: statisticTableView.frame)
-        backgroundView.setupNoStatisticState()
-        statisticTableView.backgroundView = backgroundView
+        let backgroundView = PlaceHolderView(frame: statisticCollectionView.frame)
+        backgroundView.setupNoTrackersState()
+        statisticCollectionView.backgroundView = backgroundView
     }
     
     private func calculateCompletedTrackers() -> Int {
@@ -128,24 +132,24 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     }
     
     private func updateViewAccordingToScore() {
-        if score == 0 && bestPeriod == 0 && perfectDays == 0 && averageTrackersPerDay == 0{
+        if score == 0 {
             showPlaceHolder()
         } else {
-            statisticTableView.backgroundView = nil
+            statisticCollectionView.backgroundView = nil
         }
-        statisticTableView.reloadData()
+        statisticCollectionView.reloadData()
     }
 }
 
-// MARK: - UITableViewDataSource
-extension StatisticViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// MARK: - UICollectionViewDataSource
+extension StatisticViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return score == 0 ? 0 : 4
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsTableCell.identifier, for: indexPath) as? StatisticsTableCell else {
-            return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticsTableCell.identifier, for: indexPath) as? StatisticsTableCell else {
+            return UICollectionViewCell()
         }
         cell.prepareForReuse()
         
@@ -161,18 +165,11 @@ extension StatisticViewController: UITableViewDataSource {
             cell.setScore(with: score)
         case 3:
             cell.setNameLabel(with: "average_value")
-            cell.setScore(with: averageTrackersPerDay)
+            cell.setScore(with: Int(averageTrackersPerDay))
         default:
             break
         }
         
         return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension StatisticViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CellSize.ninety
     }
 }

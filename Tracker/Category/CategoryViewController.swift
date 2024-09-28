@@ -81,7 +81,7 @@ final class CategoryViewController: UIViewController, ViewConfigurable {
         navigationController?.pushViewController(CategoryCreationViewController(), animated: true)
     }
     
-    private func showPlaceholder() {
+    private func showPlaceHolder() {
         let backgroundView = PlaceHolderView(frame: categoryTableView.frame)
         backgroundView.setUpNoCategories()
         categoryTableView.backgroundView = backgroundView
@@ -92,7 +92,7 @@ final class CategoryViewController: UIViewController, ViewConfigurable {
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (categoriesViewModel.numberOfRows == 0) {
-            showPlaceholder()
+            showPlaceHolder()
         } else {
             tableView.backgroundView = nil
         }

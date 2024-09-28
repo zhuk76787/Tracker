@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		4730BEBF2CA18BA1003A2320 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4730BEBD2CA18BA1003A2320 /* Localizable.stringsdict */; };
 		4779BEA82CA6D6FB00C7DC15 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4779BEA72CA6D6FB00C7DC15 /* InlineSnapshotTesting */; };
 		4779BEAA2CA6D70000C7DC15 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4779BEA92CA6D70000C7DC15 /* SnapshotTesting */; };
-		477F229C2CA57BE2005636EF /* PlaceHolderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F229B2CA57BE2005636EF /* PlaceHolderState.swift */; };
 		477F229E2CA585E0005636EF /* StaticticsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F229D2CA585E0005636EF /* StaticticsTableCell.swift */; };
 		477F22A02CA58AB4005636EF /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F229F2CA58AB4005636EF /* StatisticViewController.swift */; };
 		477F22A32CA5A5A7005636EF /* EditTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F22A22CA5A5A7005636EF /* EditTrackerViewController.swift */; };
@@ -99,7 +98,6 @@
 		4730BEBE2CA18BA1003A2320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		4730BEC02CA1CAD6003A2320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		4779BE9B2CA6D54700C7DC15 /* TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		477F229B2CA57BE2005636EF /* PlaceHolderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderState.swift; sourceTree = "<group>"; };
 		477F229D2CA585E0005636EF /* StaticticsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticticsTableCell.swift; sourceTree = "<group>"; };
 		477F229F2CA58AB4005636EF /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		477F22A22CA5A5A7005636EF /* EditTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrackerViewController.swift; sourceTree = "<group>"; };
@@ -172,10 +170,6 @@
 		58AB0F2408278DC8D83D3E81 /* Pods_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXGroup section */
-		4779BE9C2CA6D54700C7DC15 /* TrackerTests */ = {isa = PBXGroup; explicitFileTypes = {}; explicitFolders = (); path = TrackerTests; sourceTree = "<group>"; };
-/* End PBXGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		4779BE982CA6D54700C7DC15 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -197,11 +191,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4779BE9C2CA6D54700C7DC15 /* TrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TrackerTests;
+			sourceTree = "<group>";
+		};
 		477F229A2CA57BBE005636EF /* PlaceHolder */ = {
 			isa = PBXGroup;
 			children = (
 				47EAEDA22C6F8DB80062710E /* PlaceHolderView.swift */,
-				477F229B2CA57BE2005636EF /* PlaceHolderState.swift */,
 			);
 			path = PlaceHolder;
 			sourceTree = "<group>";
@@ -647,7 +647,6 @@
 				47EAED972C6F8B570062710E /* ButtonsCell.swift in Sources */,
 				47EAED772C6F7C160062710E /* TrackerCounterDelegate.swift in Sources */,
 				47DE14F12C98A51800FFDEAE /* OnboardingViewController.swift in Sources */,
-				477F229C2CA57BE2005636EF /* PlaceHolderState.swift in Sources */,
 				47EAEDA32C6F8DB80062710E /* PlaceHolderView.swift in Sources */,
 				479973772CA53DFD0080603A /* Constants.swift in Sources */,
 				478C50452C9A1BED003B5183 /* ViewConfigurableProtocol.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StatisticsTableCell: UITableViewCell {
+final class StatisticsTableCell: UICollectionViewCell {
     // MARK: - Public Properties
     static let identifier = "StatisticsTableCell"
     
@@ -15,8 +15,7 @@ final class StatisticsTableCell: UITableViewCell {
     private var nameLabel = UILabel()
     private var scoreLabel = UILabel()
     
-    // MARK: - Private Properties
-    private var gradient:CAGradientLayer = {
+    private var gradient: CAGradientLayer = {
         let leftColor = UIColor.color1.cgColor
         let middleColor = UIColor.color9.cgColor
         let rightColor = UIColor.color3.cgColor
@@ -43,9 +42,8 @@ final class StatisticsTableCell: UITableViewCell {
         layer.masksToBounds = true
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .greyColorCell
         layer.insertSublayer(gradient, at: 0)
         setupInnerView()
@@ -58,7 +56,6 @@ final class StatisticsTableCell: UITableViewCell {
     }
     
     // MARK: - Public Methods
-    
     func setNameLabel(with title: String) {
         nameLabel.text = NSLocalizedString(title, comment: "")
     }
@@ -82,7 +79,6 @@ final class StatisticsTableCell: UITableViewCell {
     private func setupNameLabel() {
         addSubview(nameLabel)
         nameLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        nameLabel.text = "Best Period"
         nameLabel.textColor = .label
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +93,6 @@ final class StatisticsTableCell: UITableViewCell {
     private func setupScoreLabel() {
         addSubview(scoreLabel)
         scoreLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        scoreLabel.text = "6"
         scoreLabel.textColor = .label
         
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false

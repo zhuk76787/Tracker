@@ -77,6 +77,7 @@ final class TrackerStore: NSObject {
         
         if context.hasChanges {
             try context.save()
+            NotificationCenter.default.post(name: .dataDidChange, object: nil)
         }
         
     }
@@ -118,6 +119,7 @@ final class TrackerStore: NSObject {
             context.delete(tracker)
             if context.hasChanges {
                 try context.save()
+                NotificationCenter.default.post(name: .dataDidChange, object: nil)
             }
         } catch {
             throw TrackerStoreError.fetchingTrackerError

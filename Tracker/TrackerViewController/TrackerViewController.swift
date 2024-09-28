@@ -202,8 +202,15 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     }
     
     private func showPlaceHolder() {
-        placeHolder?.configurePlaceHolder()
-        collectionView.backgroundView = placeHolder
+        let backgroundView = PlaceHolderView(frame: collectionView.frame)
+        backgroundView.setupNoTrackersState()
+        collectionView.backgroundView = backgroundView
+    }
+    
+    private func showSearchPlaceHolder() {
+        let backgroundView = PlaceHolderView(frame: collectionView.frame)
+        backgroundView.setupNoSearchResultsState()
+        collectionView.backgroundView = backgroundView
     }
     
     private func deleteTracker(tracker: Tracker) {
@@ -284,10 +291,18 @@ extension TrackerViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if presenter.noTrackersToShow() {
-            showPlaceHolder()
+        if searchController.isActive {
+            if presenter.noSearchResults() {
+                showSearchPlaceHolder()
+            } else {
+                collectionView.backgroundView = nil
+            }
         } else {
-            collectionView.backgroundView = nil
+            if presenter.noTrackersToShow() {
+                showPlaceHolder()
+            } else {
+                collectionView.backgroundView = nil
+            }
         }
         return presenter.numberOfSections()
     }
@@ -347,9 +362,14 @@ extension TrackerViewController {
 extension TrackerViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        if text != "" {
-            placeHolder?.state = PlaceHolderState.noSearchResult
+        
+        if !text.isEmpty {
             presenter.updateCollectionAccordingToSearchBarResults(name: text)
+            if presenter.noTrackersToShow() {
+                placeHolder?.setupNoSearchResultsState() // Показываем PlaceHolder, если ничего не найдено
+            } else {
+                collectionView.backgroundView = nil  // Убираем PlaceHolder, если что-то найдено
+            }
             collectionView.reloadData()
         }
     }

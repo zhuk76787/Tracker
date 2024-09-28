@@ -88,6 +88,10 @@ final class TrackerPresenter {
         }
     }
     
+    func noSearchResults() -> Bool {
+            return currentCategories.isEmpty
+        }
+    
     func getTracker(forIndexPath indexPath: IndexPath) -> Tracker {
         return currentCategories[indexPath.section].trackers[indexPath.row]
     }
@@ -107,6 +111,7 @@ final class TrackerPresenter {
             try trackerStore.deleteTracker(tracker: tracker)
             categories = self.trackerCategoryStore.categories
             updateMainScreen()
+            NotificationCenter.default.post(name: .dataDidChange, object: nil)
         } catch {
             print("\(tracker.name) was not deleted")
         }
@@ -139,6 +144,7 @@ final class TrackerPresenter {
             
             self.categories = self.trackerCategoryStore.categories
             self.updateMainScreen()
+            NotificationCenter.default.post(name: .dataDidChange, object: nil)
         }
         let vc = EditTrackerViewController(viewModel: viewModel)
         viewController?.presentViewController(vc: vc)
@@ -159,7 +165,7 @@ final class TrackerPresenter {
                 self.viewController?.datePicker.date = Date()
                 self.currentDate = self.viewController?.datePicker.date ?? Date()
             }
-            self.viewController?.placeHolder?.state = PlaceHolderState.noSearchResult
+            self.viewController?.placeHolder?.setupNoSearchResultsState()
             self.updateMainScreen()
         }
         viewController?.presentViewController(vc: vc)
@@ -205,16 +211,16 @@ final class TrackerPresenter {
     func filterCategoriesToShow(filter: Filters) -> [TrackerCategory] {
         switch filter {
         case .allTrackers:
-            viewController?.placeHolder?.state = PlaceHolderState.noTrackers
+            viewController?.placeHolder?.setupNoTrackersState()
             return filterPinnedTrackers(categories: filterCategoriesBySelectedDay())
         case .todayTrackers:
-            viewController?.placeHolder?.state = PlaceHolderState.noTrackers
+            viewController?.placeHolder?.setupNoTrackersState()
             return  filterPinnedTrackers(categories: filterCategoriesBySelectedDay())
         case .completedTrackers:
-            viewController?.placeHolder?.state = PlaceHolderState.noSearchResult
+            viewController?.placeHolder?.setupNoSearchResultsState()
             return filterPinnedTrackers(categories: filterCategoriesByCompletion(isCompleted: true))
         case .uncompletedTrackers:
-            viewController?.placeHolder?.state = PlaceHolderState.noSearchResult
+            viewController?.placeHolder?.setupNoSearchResultsState()
             return filterPinnedTrackers(categories: filterCategoriesByCompletion(isCompleted: false))
         }
     }
@@ -297,7 +303,6 @@ final class TrackerPresenter {
 extension TrackerPresenter: TrackerStoreDelegate {
     func store(insertedIndexes: [IndexPath], deletedIndexes: IndexSet) {
         categories = trackerCategoryStore.categories
-        //updateCollectionView()
         updateMainScreen()
     }
 }
