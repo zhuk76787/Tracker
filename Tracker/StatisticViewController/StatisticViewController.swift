@@ -65,9 +65,6 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         statisticTableView.delegate = self
         setupView()
         updateViewAccordingToScore()
-        statisticTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0) // Отступ снизу
-        statisticTableView.separatorStyle = .none
-        
         NotificationCenter.default.addObserver(self, selector: #selector(dataDidChange), name: .dataDidChange, object: nil)
     }
     
