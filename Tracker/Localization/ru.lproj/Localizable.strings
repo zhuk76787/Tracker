@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  Tracker
-
-  Created by Дмитрий Жуков on 9/23/24.
-  
-*/
+ Localizable.strings
+ Tracker
+ 
+ Created by Дмитрий Жуков on 9/23/24.
+ 
+ */
 
 "onboarding.first" = "Отслеживайте только то, что хотите";
 "onboarding.second" = "Даже если это не литры воды и йога";
@@ -46,6 +46,9 @@
 "completedTrackers" = "Завершенные";
 "uncompletedTrackers" = "Не завершенные";
 "stat.completed" = "Трекеров завершено";
+"best_period" = "Лучший период";
+"pefect_days" = "Идеальные дни";
+"average_value" = "Сдерднее значение";
 
 "weekdays.monday" = "Понедельник";
 "weekdays.tuesday" = "Вторник";

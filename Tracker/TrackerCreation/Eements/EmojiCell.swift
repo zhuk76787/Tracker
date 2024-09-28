@@ -37,15 +37,15 @@ final class EmojiCell: UICollectionViewCell, ViewConfigurable {
     
     // MARK: - ViewConfigurable Methods
     func addSubviews() {
-       contentView.addSubview(emojiLabel)
-   }
-   
+        contentView.addSubview(emojiLabel)
+    }
+    
     func addConstraints() {
-       NSLayoutConstraint.activate([
-           emojiLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           emojiLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-       ])
-   }
+        NSLayoutConstraint.activate([
+            emojiLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            emojiLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+    }
     
     // MARK: - Public Methods
     func setEmoji(with string: String) {

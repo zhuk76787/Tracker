@@ -12,48 +12,48 @@ extension UIColor {
     static var subtitleLabelColor: UIColor { #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1) }
     static var unselectedTabBarIcon: UIColor { #colorLiteral(red: 0.69, green: 0.6910327673, blue: 0.6910327673, alpha: 1) }
     static var buttonColor: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) :  // Цвет для тёмной темы
-                #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) :  // Цвет для тёмной темы
+            #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1)  // Цвет для светлой темы
         }
+    }
     static var addButtonColor: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Цвет для тёмной темы
-                #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Цвет для тёмной темы
+            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Цвет для светлой темы
         }
+    }
     static var searchBarColor: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 0.462745098, green: 0.462745098, blue: 0.5019607843, alpha: 0.24) :  // Цвет для тёмной темы
-                #colorLiteral(red: 0.462745098, green: 0.462745098, blue: 0.5019607843, alpha: 0.12)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.462745098, green: 0.462745098, blue: 0.5019607843, alpha: 0.24) :  // Цвет для тёмной темы
+            #colorLiteral(red: 0.462745098, green: 0.462745098, blue: 0.5019607843, alpha: 0.12)  // Цвет для светлой темы
         }
-
+    }
+    
     static var grey: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 0.9019607843, green: 0.9098039216, blue: 0.9215686275, alpha: 1) :  // Цвет для тёмной темы
-                #colorLiteral(red: 0.9212860465, green: 0.9279851317, blue: 0.9373531938, alpha: 1)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.9019607843, green: 0.9098039216, blue: 0.9215686275, alpha: 1) :  // Цвет для тёмной темы
+            #colorLiteral(red: 0.9212860465, green: 0.9279851317, blue: 0.9373531938, alpha: 1)  // Цвет для светлой темы
         }
+    }
     static var greyColorCell: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 0.85) :  // Цвет для тёмной темы
-                #colorLiteral(red: 0.9215686275, green: 0.9294117647, blue: 0.937254902, alpha: 0.3033940397)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 0.85) :  // Цвет для тёмной темы
+            #colorLiteral(red: 0.9215686275, green: 0.9294117647, blue: 0.937254902, alpha: 0.3033940397)  // Цвет для светлой темы
         }
+    }
     static var textColor: UIColor {
-            return UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ?
-                #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Цвет для тёмной темы
-                #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Цвет для светлой темы
-            }
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Цвет для тёмной темы
+            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Цвет для светлой темы
         }
+    }
     static var color1: UIColor { #colorLiteral(red: 0.9921568627, green: 0.2980392157, blue: 0.2862745098, alpha: 1) }
     static var color2: UIColor { #colorLiteral(red: 1, green: 0.5333333333, blue: 0.1176470588, alpha: 1) }
     static var color3: UIColor { #colorLiteral(red: 0, green: 0.4823529412, blue: 0.9803921569, alpha: 1) }

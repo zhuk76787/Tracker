@@ -17,7 +17,7 @@ final class TabBarController: UITabBarController {
     private func generateTabBar() {
         let navigationViewController = UINavigationController(rootViewController: TrackerViewController())
         let statisticNavigationController = UINavigationController(rootViewController: StatisticViewController())
-
+        
         tabBar.tintColor = .blueColor
         tabBar.unselectedItemTintColor = .unselectedTabBarIcon
         viewControllers = [

@@ -40,19 +40,17 @@ final class StatisticsTableCell: UITableViewCell {
         super.layoutSubviews()
         gradient.frame = bounds
         layer.cornerRadius = 16
+        layer.masksToBounds = true
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        
         backgroundColor = .greyColorCell
-        
         layer.insertSublayer(gradient, at: 0)
         setupInnerView()
         setupScoreLabel()
         setupNameLabel()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -60,8 +58,9 @@ final class StatisticsTableCell: UITableViewCell {
     }
     
     // MARK: - Public Methods
-    func setNameLabel() {
-        nameLabel.text = NSLocalizedString("stat.completed", comment: "")
+    
+    func setNameLabel(with title: String) {
+        nameLabel.text = NSLocalizedString(title, comment: "")
     }
     
     func setScore(with score: Int) {

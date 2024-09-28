@@ -34,6 +34,10 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
         picker.datePickerMode = .date
         picker.locale = Locale(identifier: "ru_DE")
         picker.preferredDatePickerStyle = .compact
+        picker.backgroundColor = #colorLiteral(red: 0.9531050324, green: 0.9531050324, blue: 0.9531050324, alpha: 1)
+        picker.layer.cornerRadius = 8
+        picker.layer.masksToBounds = true
+        picker.overrideUserInterfaceStyle = .light
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         picker.widthAnchor.constraint(equalToConstant: 87).isActive = true
@@ -61,7 +65,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
         button.backgroundColor = .blueColor
         return button
     }()
-
+    
     
     // MARK: - Private Properties
     

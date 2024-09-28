@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  Tracker
-
-  Created by Дмитрий Жуков on 9/23/24.
-  
-*/
+ Localizable.strings
+ Tracker
+ 
+ Created by Дмитрий Жуков on 9/23/24.
+ 
+ */
 
 "onboarding.first" = "Track only what you want";
 "onboarding.second" = "Even if it's not litres of water and yoga";
@@ -46,6 +46,10 @@
 "completedTrackers" = "Completed";
 "uncompletedTrackers" = "Uncompleted";
 "stat.completed" = "Completed trackers";
+"best_period" = "Best period";
+"pefect_days" = "Perfect days";
+"average_value" = "Average value";
+
 
 "weekdays.monday" = "Monday";
 "weekdays.tuesday" = "Tuesday";

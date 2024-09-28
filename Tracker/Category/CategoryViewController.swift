@@ -26,10 +26,10 @@ final class CategoryViewController: UIViewController, ViewConfigurable {
         button.setTitle(NSLocalizedString("category.add", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.setTitleColor(UIColor { traitCollection in
-               return traitCollection.userInterfaceStyle == .dark ?
-               #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Текст в светлой теме
-               #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Текст в тёмной теме
-           }, for: .normal)
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Текст в светлой теме
+            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Текст в тёмной теме
+        }, for: .normal)
         button.backgroundColor = .buttonColor
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(createCategoryButtonTapped), for: .touchUpInside)

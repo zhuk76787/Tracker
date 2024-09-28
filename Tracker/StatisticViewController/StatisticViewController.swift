@@ -15,6 +15,10 @@ struct StatisticViewControllerPreview: PreviewProvider {
     }
 }
 
+extension Notification.Name {
+    static let dataDidChange = Notification.Name("dataDidChange")
+}
+
 class StatisticViewController: UIViewController, ViewConfigurable {
     // MARK: - Private Properties
     private let customNavigationBar: UIView = {
@@ -29,12 +33,29 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         tableView.register(StatisticsTableCell.self, forCellReuseIdentifier: StatisticsTableCell.identifier)
         tableView.backgroundColor = .systemBackground
         tableView.layer.cornerRadius = 16
+        tableView.layer.masksToBounds = true
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
     private let trackerRecordStore = TrackerRecordStore()
+    
+    // MARK: - Computed Properties
     private var score: Int {
         return calculateCompletedTrackers()
+    }
+    
+    private var bestPeriod: Int {
+        return trackerRecordStore.bestPeriod
+    }
+    
+    private var perfectDays: Int {
+        return trackerRecordStore.perfectDays
+    }
+    
+    private var averageTrackersPerDay: Int {
+        return Int(trackerRecordStore.averageTrackersPerDay)
     }
     
     // MARK: - Lifecycle
@@ -44,6 +65,24 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         statisticTableView.delegate = self
         setupView()
         updateViewAccordingToScore()
+        statisticTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0) // Отступ снизу
+        statisticTableView.separatorStyle = .none
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(dataDidChange), name: .dataDidChange, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Private Methods
+    private func updateData() {
+        statisticTableView.reloadData()
+        updateViewAccordingToScore()
+    }
+    
+    @objc private func dataDidChange() {
+        updateData()
     }
     
     // MARK: - ViewConfigurable Methods
@@ -65,6 +104,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
             statisticTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
     // MARK: - Private Methods
     private func setupView() {
         setupNavigationBar()
@@ -91,7 +131,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     }
     
     private func updateViewAccordingToScore() {
-        if score == 0 {
+        if score == 0 && bestPeriod == 0 && perfectDays == 0 && averageTrackersPerDay == 0{
             showPlaceHolder()
         } else {
             statisticTableView.backgroundView = nil
@@ -103,7 +143,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
 // MARK: - UITableViewDataSource
 extension StatisticViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return score == 0 ? 0 : 1
+        return score == 0 ? 0 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,8 +151,24 @@ extension StatisticViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.prepareForReuse()
-        cell.setNameLabel()
-        cell.setScore(with: score)
+        
+        switch indexPath.row {
+        case 0:
+            cell.setNameLabel(with: "best_period")
+            cell.setScore(with: bestPeriod)
+        case 1:
+            cell.setNameLabel(with: "pefect_days")
+            cell.setScore(with: perfectDays)
+        case 2:
+            cell.setNameLabel(with: "stat.completed")
+            cell.setScore(with: score)
+        case 3:
+            cell.setNameLabel(with: "average_value")
+            cell.setScore(with: averageTrackersPerDay)
+        default:
+            break
+        }
+        
         return cell
     }
 }
