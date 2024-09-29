@@ -56,7 +56,7 @@ final class NewTrackerViewController: UIViewController, ViewConfigurable {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("chooseTrackerVC.title", comment: "")
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         configureView()
     }
     

@@ -45,7 +45,7 @@ final class CategoryViewController: UIViewController, ViewConfigurable {
         
         self.title = NSLocalizedString("category", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         
         configureView()
         

@@ -31,7 +31,7 @@ final class FiltersViewController: UIViewController {
         super.viewDidLoad()
         self.title = NSLocalizedString("filters", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         
         initTableView()
     }

@@ -53,7 +53,7 @@ final class CategoryCreationViewController: UIViewController, ViewConfigurable {
         
         self.title = NSLocalizedString("category.new", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         
         configureView()
         setupHideKeyboardGesture()

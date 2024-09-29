@@ -88,7 +88,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         presenter.viewController = self
         setupView()
     }
@@ -156,7 +156,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
     
     private let customNavigationBar: UIView = {
         let navigationBar = UIView()
-        navigationBar.backgroundColor = .systemBackground
+        navigationBar.backgroundColor = .backgroudColor
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         return navigationBar
     }()
@@ -189,7 +189,7 @@ final class TrackerViewController: UIViewController, ViewConfigurable {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: HeaderCollectionReusableView.identifier
         )
-        collectionView.backgroundColor = .systemBackground 
+        collectionView.backgroundColor = .backgroudColor
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     

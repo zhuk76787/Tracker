@@ -23,7 +23,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     // MARK: - Private Properties
     private let customNavigationBar: UIView = {
         let navigationBar = UIView()
-        navigationBar.backgroundColor = .systemBackground
+        navigationBar.backgroundColor = .backgroudColor
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         return navigationBar
     }()
@@ -35,7 +35,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 90) // Ширина и высота ячейки
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .backgroudColor
         collectionView.layer.cornerRadius = 16
         collectionView.layer.masksToBounds = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +64,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .backgroudColor
         statisticCollectionView.dataSource = self
         statisticCollectionView.register(StatisticsTableCell.self, forCellWithReuseIdentifier: StatisticsTableCell.identifier)
         
@@ -120,7 +121,7 @@ class StatisticViewController: UIViewController, ViewConfigurable {
     
     private func showPlaceHolder() {
         let backgroundView = PlaceHolderView(frame: statisticCollectionView.frame)
-        backgroundView.setupNoTrackersState()
+        backgroundView.setupNoStatisticState()
         statisticCollectionView.backgroundView = backgroundView
     }
     

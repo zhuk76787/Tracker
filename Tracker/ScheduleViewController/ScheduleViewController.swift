@@ -58,7 +58,7 @@ final class ScheduleViewController: UIViewController, ViewConfigurable {
         configureView()
         self.title = NSLocalizedString("schedule", comment: "")
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
     }
     
     // MARK: - ViewConfigurable Methods

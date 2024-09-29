@@ -53,7 +53,7 @@ extension NewEventCreationViewController: ConfigureUIForTrackerCreationProtocol 
     
     func setupBackground() {
         self.title = NSLocalizedString("event.new", comment: "")
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         navigationItem.hidesBackButton = true
     }
     

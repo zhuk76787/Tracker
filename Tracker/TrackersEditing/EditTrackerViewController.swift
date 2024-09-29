@@ -45,7 +45,7 @@ final class EditTrackerViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.layer.borderWidth = 1
         button.layer.borderColor = #colorLiteral(red: 0.9607843137, green: 0.4196078431, blue: 0.4235294118, alpha: 1)
-        button.backgroundColor = .systemBackground
+        button.backgroundColor = .backgroudColor
         return button
     }()
     
@@ -64,7 +64,7 @@ final class EditTrackerViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("habit.edit", comment: "")
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         navigationItem.hidesBackButton = true
         
         setUpLabel()

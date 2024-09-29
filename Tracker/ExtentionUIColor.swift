@@ -11,6 +11,13 @@ extension UIColor {
     static var blueColor: UIColor { #colorLiteral(red: 0.2156862745, green: 0.4470588235, blue: 0.9058823529, alpha: 1) }
     static var subtitleLabelColor: UIColor { #colorLiteral(red: 0.6823529412, green: 0.6862745098, blue: 0.7058823529, alpha: 1) }
     static var unselectedTabBarIcon: UIColor { #colorLiteral(red: 0.69, green: 0.6910327673, blue: 0.6910327673, alpha: 1) }
+    static var backgroudColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ?
+            #colorLiteral(red: 0.1019607843, green: 0.1058823529, blue: 0.1333333333, alpha: 1) :  // Цвет для тёмной темы
+            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)  // Цвет для светлой темы
+        }
+    }
     static var buttonColor: UIColor {
         return UIColor { traitCollection in
             return traitCollection.userInterfaceStyle == .dark ?

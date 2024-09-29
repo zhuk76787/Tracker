@@ -29,7 +29,7 @@ final class StatisticsTableCell: UICollectionViewCell {
     
     private let innerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroudColor
         view.layer.cornerRadius = 15
         return view
     }()
