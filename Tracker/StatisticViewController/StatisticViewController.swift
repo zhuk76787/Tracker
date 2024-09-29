@@ -19,7 +19,7 @@ extension Notification.Name {
     static let dataDidChange = Notification.Name("dataDidChange")
 }
 
-class StatisticViewController: UIViewController, ViewConfigurable {
+final class StatisticViewController: UIViewController, ViewConfigurable {
     // MARK: - Private Properties
     private let customNavigationBar: UIView = {
         let navigationBar = UIView()
@@ -170,7 +170,6 @@ extension StatisticViewController: UICollectionViewDataSource {
         default:
             break
         }
-        
         return cell
     }
 }

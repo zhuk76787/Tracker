@@ -16,9 +16,9 @@ final class StatisticsTableCell: UICollectionViewCell {
     private var scoreLabel = UILabel()
     
     private var gradient: CAGradientLayer = {
-        let leftColor = UIColor.color1.cgColor
-        let middleColor = UIColor.color9.cgColor
-        let rightColor = UIColor.color3.cgColor
+        let leftColor = UIColor.cellColor1.cgColor
+        let middleColor = UIColor.cellColor9.cgColor
+        let rightColor = UIColor.cellColor3.cgColor
         
         let gr = CAGradientLayer()
         gr.colors = [leftColor, middleColor, rightColor]

@@ -69,11 +69,11 @@ final class EditingViewModel {
     }
     
     func saveButtonCanBePressed() -> Bool {
-        guard let _ = trackerInfo.name,
-              let _ = trackerInfo.emoji,
-              let _ = trackerInfo.color,
-              let _ = trackerInfo.schedule,
-              let _ = trackerInfo.category
+        guard trackerInfo.name != nil,
+              trackerInfo.emoji != nil,
+              trackerInfo.color != nil,
+              trackerInfo.schedule != nil,
+              trackerInfo.category != nil
         else {
             return false
         }

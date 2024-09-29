@@ -71,21 +71,21 @@ final class PlaceHolderView: UIView {
     
     // MARK: - Private Methods
     private func setupView() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
-        
+        label.textAlignment = .center
+        [imageView, label].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
+        addConstraint ()
+    }
+    
+    private func addConstraint () {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 80),
             imageView.heightAnchor.constraint(equalToConstant: 80),
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 193),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
-        
-        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)

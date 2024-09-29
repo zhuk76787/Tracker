@@ -91,7 +91,7 @@ final class CategoryViewController: UIViewController, ViewConfigurable {
 //MARK: - TableView Data Source
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (categoriesViewModel.numberOfRows == 0) {
+        if categoriesViewModel.numberOfRows == 0 {
             showPlaceHolder()
         } else {
             tableView.backgroundView = nil

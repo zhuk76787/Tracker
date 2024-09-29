@@ -128,9 +128,6 @@ final class TrackerCategoryStore: NSObject {
                     state: .habit,
                     isPinned: trackerData.isPinned
                 )
-                ///
-                print("[DEBUG]: TrackerCategoryStore: tracker.isPinned: \(tracker.isPinned)")
-                ///
                 trackers.append(tracker)
             }
         }

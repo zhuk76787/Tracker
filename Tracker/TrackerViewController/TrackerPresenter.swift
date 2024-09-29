@@ -18,14 +18,9 @@ final class TrackerPresenter {
     
     var selectedFilter: Filters {
         get {
-            if let value = userDefaults.string(forKey: "filter") {
-                guard let filter = Filters(rawValue: value) else {
-                    return Filters.allTrackers
-                }
-                return filter
-            } else {
-                return Filters.allTrackers
-            }
+            guard let value = userDefaults.string(forKey: "filter"),
+                  let filter = Filters(rawValue: value) else { return Filters.allTrackers }
+            return filter
         }
         set {
             userDefaults.set(newValue.rawValue, forKey: "filter")
@@ -81,16 +76,12 @@ final class TrackerPresenter {
     }
     
     func noTrackersToShow() -> Bool {
-        if (currentCategories.count == 0) {
-            return true
-        } else {
-            return false
-        }
+        currentCategories.count == 0
     }
     
     func noSearchResults() -> Bool {
-            return currentCategories.isEmpty
-        }
+        return currentCategories.isEmpty
+    }
     
     func getTracker(forIndexPath indexPath: IndexPath) -> Tracker {
         return currentCategories[indexPath.section].trackers[indexPath.row]
@@ -172,19 +163,11 @@ final class TrackerPresenter {
     }
     
     func filterIsActive() -> Bool {
-        if selectedFilter == Filters.allTrackers {
-            return false
-        } else {
-            return true
-        }
+        !(selectedFilter == Filters.allTrackers)
     }
     
     func filterButtonShoulBeHidden() -> Bool {
-        if currentCategories.isEmpty && selectedFilter == Filters.allTrackers {
-            return true
-        } else {
-            return false
-        }
+        currentCategories.isEmpty && selectedFilter == Filters.allTrackers
     }
     
     //MARK: - Collection Updating

@@ -21,12 +21,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     
     var isPinned: Bool = false {
         didSet {
-            if (isPinned) {
-                pinImageView.isHidden = false
-            } else {
-                pinImageView.isHidden = true
-            }
-            
+            pinImageView.isHidden = !isPinned
         }
     }
     
@@ -251,37 +246,24 @@ extension TrackerCollectionViewCell: UIContextMenuInteractionDelegate {
         guard let trackerInfo = trackerInfo else {
             return nil
         }
+        
         return UIContextMenuConfiguration(
             identifier: nil,
             previewProvider: nil,
             actionProvider: { _ in
-                
-                let tracker = Tracker(
-                    id: trackerInfo.id,
-                    name: trackerInfo.name,
-                    color: trackerInfo.color,
-                    emoji: trackerInfo.emoji,
-                    schedule: trackerInfo.schedule,
-                    state: trackerInfo.state,
-                    isPinned: self.isPinned )
-                
-                let pinTittle = self.isPinned ? "unpin" : "pin"
-                
-                let pinAction = UIAction(title: NSLocalizedString(pinTittle, comment: "")) { [weak self] _ in
-                    self?.pinTrackerHandler?(tracker)
-                }
-                
-                let editAction = UIAction(title: NSLocalizedString("edit", comment: "")) { [weak self] _ in
-                    self?.editTrackerHandler?(trackerInfo)
-                }
-                
-                let deleteAction = UIAction(title: NSLocalizedString("delete", comment: ""), attributes: .destructive) { [weak self] _ in
-                    self?.deleteTrackerHandler?(tracker)
-                }
-                
-                deleteAction.accessibilityIdentifier = "deleteTracker"
-                
-                return UIMenu(title: "", children: [pinAction, editAction, deleteAction])
+                return AlertFactory.createContextMenu(
+                    trackerInfo: trackerInfo,
+                    isPinned: self.isPinned,
+                    pinTrackerHandler: { tracker in
+                        self.pinTrackerHandler?(tracker)
+                    },
+                    editTrackerHandler: { trackerInfo in
+                        self.editTrackerHandler?(trackerInfo)
+                    },
+                    deleteTrackerHandler: { tracker in
+                        self.deleteTrackerHandler?(tracker)
+                    }
+                )
             }
         )
     }
