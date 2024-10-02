@@ -28,14 +28,14 @@ final class PlaceHolderView: UIView {
     
     func setupNoTrackersState() {
         imageView.image = UIImage(named: "starIcon")
-        label.text = "Что будем отслеживать?"
+        label.text = NSLocalizedString("placeholder.noTrackers", comment: "")
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .center
     }
     
     func setupNoSearchResultsState() {
         imageView.image = UIImage(named: "notFound")
-        label.text = "Ничего не найдено"
+        label.text = NSLocalizedString("placeholder.noSearchResults", comment: "")
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .center
     }
@@ -49,7 +49,7 @@ final class PlaceHolderView: UIView {
         paragraphStyle.lineSpacing = 18 - UIFont.systemFont(ofSize: 12, weight: .medium).lineHeight
         
         let attributedText = NSAttributedString(
-            string: "Привычки и события можно \n объединить по смыслу",
+            string: NSLocalizedString("placeholder.noCategories", comment: ""),
             attributes: [
                 .font: UIFont.systemFont(ofSize: 12, weight: .medium),
                 .paragraphStyle: paragraphStyle

@@ -79,7 +79,6 @@ final class TrackerCategoryStore: NSObject {
         let request  = TrackerCategoryCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.title), name)
         let count = try context.count(for: request)
-        
         if count == 0 && name != "" {
             let categoryCoreData = TrackerCategoryCoreData(context: context)
             categoryCoreData.title = name
@@ -126,7 +125,8 @@ final class TrackerCategoryStore: NSObject {
                     color: color,
                     emoji: emoji,
                     schedule: schedule,
-                    state: .Habit
+                    state: .habit,
+                    isPinned: trackerData.isPinned
                 )
                 trackers.append(tracker)
             }
